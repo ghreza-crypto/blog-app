@@ -2,7 +2,7 @@ class Comment < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :post, optional: true
 
-  after_save :update_post_counter
+  after_save :update_comment_counter
 
 
   private
