@@ -1,1 +1,14 @@
-<h1>Here's a list of Users</h1>
+<%= stylesheet_link_tag 'users_index' %>
+<section class='users-section'>
+<% @users.each do |user| %>
+    <%= link_to user_path(user.id), class: 'nav-link' do %>
+        <div class='user-container'>
+            <%= image_tag('user_image.webp') %>
+            <div class='user-info'>
+                <h2 class='username'><%= user.name %></h2>
+                <p class='number-of-posts'>Number of posts: <%= user.posts_counter %></p>
+            </div>
+        </div>
+    <% end %>
+<% end %>
+</section>
