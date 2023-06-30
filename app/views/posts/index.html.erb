@@ -1,6 +1,6 @@
 <section class='user-section'>
     <div class='user-container user-show'>
-        <%= image_tag('user_image.webp') %>
+         <%= image_tag(@user.photo, style: "height:100%;width:auto;") %>
         <div class='user-info'>
             <h2 class='username'><%= @user.name %></h2>
             <p class='number-of-posts'>Number of posts: <%= @user.posts_counter %></p>
