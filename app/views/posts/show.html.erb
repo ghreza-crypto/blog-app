@@ -1,1 +1,25 @@
-<h1>Showing a specific Post of the User</h1>
+<% if @post %>
+    <section class='post-section'>
+        <div class='user-posts'>
+            <div class='post-container'>
+                <h3>"<%= @post.title %>" by <%= @post.author.name %></h3>
+                <p><%= @post.text %></p>
+                <div class='post-interactions'>
+                    <p>Comments: <%= @post.comments_counter %></p>
+                    |
+                    <p>Likes: <%= @post.likes_counter %></p>
+                </div>
+            </div>
+            <div class='comments-container'>
+                <% @post.comments.each do |comment| %>
+                    <div class='comment-container'>
+                        <h4><%= comment.author.name %>:</h4>
+                        <p><%= comment.text %></p>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </section>
+<% else %>
+    <h1>Post not found</h1>
+<% end %>

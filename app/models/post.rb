@@ -9,6 +9,10 @@ class Post < ApplicationRecord
 
   after_save :update_post_counter
 
+  def author
+    User.find(author_id)
+  end
+
   def recent_comments
     comments.order('created_at Desc').limit(5)
   end

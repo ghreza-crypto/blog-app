@@ -1,1 +1,13 @@
-<h1>Here's a list of Users</h1>
+<section class='users-section'>
+<% @users.each do |user| %>
+    <%= link_to user_path(user.id), class: "nav-link" do %>
+        <div class='user-container'> 
+           <%= image_tag(user.photo, style: "height:100%;width:auto;") %>
+            <div class='user-info'>
+                <h2 class='username'><%= user.name %></h2>
+                <p class='number-of-posts'>Number of posts: <%= user.posts_counter %></p>
+            </div>
+        </div>
+    <% end %>
+<% end %>
+</section>

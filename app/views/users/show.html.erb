@@ -1,1 +1,39 @@
-<h1>Showing a specific User</h1>
+<section class='user-section'>
+    <div class='user-container user-show'>
+        <%= image_tag(@user.photo, style: "height:100%;width:auto;") %>
+        <div class='user-info'>
+            <h2 class='username'><%= @user.name %></h2>
+            <p class='number-of-posts'>Number of posts: <%= @user.posts_counter %></p>
+        </div>
+    </div>
+
+    <div class='user-bio'>
+        <h4>Bio</h4>
+        <p><%= @user.bio %></p>
+    </div>
+
+    <% if @user.recent_posts.any? %>
+        <div class='user-posts'>
+            <h2>Posts</h2>
+            <% @user.recent_posts.each do |post| %>
+                <div class='post-container'>
+                    <h3><%= post.title %></h3>
+                    <p><%= post.text %></p>
+                    <div class='post-interactions'>
+                        <p>Comments: <%= post.comments_counter %></p>
+                        |
+                        <p>Likes: <%= post.likes_counter %></p>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+
+        <%= link_to user_posts_path(@user.id), class: 'all-posts-button' do %>
+            <p>See all posts</p>
+        <% end %>
+    <% else %>
+        <div class='no-posts'>
+            <h2>This user has no posts</h2>
+        </div>
+    <% end %>
+</section>

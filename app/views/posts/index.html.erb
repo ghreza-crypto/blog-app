@@ -1,1 +1,42 @@
-<h1>Here's a list of Posts for a given User</h1>
+<section class='user-section'>
+    <div class='user-container user-show'>
+         <%= image_tag(@user.photo, style: "height:100%;width:auto;") %>
+        <div class='user-info'>
+            <h2 class='username'><%= @user.name %></h2>
+            <p class='number-of-posts'>Number of posts: <%= @user.posts_counter %></p>
+        </div>
+    </div>
+
+    <div class='user-bio'>
+        <h4>Bio</h4>
+        <p><%= @user.bio %></p>
+    </div>
+
+    <div class='user-posts'>
+        <h2>Posts</h2>
+        <% @posts.each do |post| %>
+            <div class='post-container'>
+                <div class='title-and-link'>
+                    <h3><%= post.title %></h3>
+                    <%= link_to user_post_path(@user.id, post.id), class: 'view-post' do %>
+                        <p>View post</p>
+                    <% end %>
+                </div>
+                <p><%= post.text %></p>
+                <div class='post-interactions'>
+                    <p>Comments: <%= post.comments_counter %></p>
+                    |
+                    <p>Likes: <%= post.likes_counter %></p>
+                </div>
+            </div>
+            <div class='comments-container'>
+                <% post.recent_comments.each do |comment| %>
+                    <div class='comment-container'>
+                        <h4><%= comment.author.name %>:</h4>
+                        <p><%= comment.text %></p>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+</section>
