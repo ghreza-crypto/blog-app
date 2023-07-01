@@ -1,0 +1,13 @@
+<%= stylesheet_link_tag 'forms' %>
+<%= form_with model: @comment, url: user_post_comments_path, class: 'post-form' do |form| %>
+    <h2 class="form-title">New comment</h2>
+    <div class="form-group">
+      <%= form.text_area :text, placeholder: 'Text', class: 'input text-input' %>
+    </div>
+    <%= form.submit %>
+<% end %>
+<% if flash[:alert] %>
+  <div class="flash-notice">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
