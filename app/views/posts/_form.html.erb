@@ -1,0 +1,14 @@
+<%= stylesheet_link_tag 'forms' %>
+<%= form_with model: @post, url: user_posts_path, class: 'post-form' do |form| %>
+    <h2 class="form-title">New Post</h2>
+    <div class="form-group">
+      <%= form.text_field :title, placeholder: 'Title', class: 'input title-input' %>
+      <%= form.text_area :text, placeholder: 'Text', class: 'input text-input' %>
+    </div>
+    <%= form.submit %>
+<% end %>
+<% if flash[:alert] %>
+  <div class="flash-notice">
+    <%= flash[:alert] %>
+  </div>
+<% end %>

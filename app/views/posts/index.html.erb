@@ -11,6 +11,7 @@
         <h4>Bio</h4>
         <p><%= @user.bio %></p>
     </div>
+<%= link_to "Create new post", new_user_post_path, class: "create-post" %>
 
     <div class='user-posts'>
         <h2>Posts</h2>
@@ -18,9 +19,15 @@
             <div class='post-container'>
                 <div class='title-and-link'>
                     <h3><%= post.title %></h3>
-                    <%= link_to user_post_path(@user.id, post.id), class: 'view-post' do %>
-                        <p>View post</p>
-                    <% end %>
+                   <div class='user-interactions'>
+                        <%= link_to "View post", user_post_path(@user.id, post.id), class: "interactive-links" %>
+                        |
+                        <%= link_to "Add comment", new_user_post_comment_path(@user.id, post.id), class: "interactive-links" %>
+                        |
+                        <%= form_with url: user_post_likes_path(@user.id, post.id) do |form| %>
+                            <a><%= form.submit "Like", class: "like-button" %></a>
+                        <% end %>
+                    </div>
                 </div>
                 <p><%= post.text %></p>
                 <div class='post-interactions'>
