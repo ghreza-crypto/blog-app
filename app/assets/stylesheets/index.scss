@@ -20,9 +20,11 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2rem;
 }
 
 .nav-link {
+  display: flex;
   text-decoration: none;
   color: black;
   width: 90%;
@@ -34,7 +36,6 @@ img {
   gap: 2rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
   border-radius: 0.5rem;
-  margin: 1rem;
   padding: 1rem;
   width: 100%;
   height: 12rem;
@@ -89,8 +90,23 @@ img {
     align-items: center;
     width: 100%;
 
-    .view-post {
-      text-decoration: none;
+    .user-interactions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+
+      .interactive-links {
+        text-decoration: none;
+      }
+
+      .like-button {
+        font-size: 1rem;
+        padding: 0;
+        background: none;
+        border: none;
+        color: blue;
+        cursor: pointer;
+      }
     }
   }
 }
@@ -125,10 +141,13 @@ img {
   }
 }
 
-.all-posts-button {
+.all-posts-button,
+.create-post {
   margin-top: 1rem;
   padding: 1rem;
   border-radius: 0.25rem;
+  width: 90%;
+  text-align: center;
   text-decoration: none;
   background-color: #000;
   border: 1px solid #000;
@@ -171,5 +190,66 @@ img {
   h1 {
     font-size: 2.5rem;
     text-align: center;
+  }
+}
+// break
+.post-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  width: 30rem;
+  margin: 0 auto;
+
+  .form-title {
+    color: #000;
+    font-size: 2rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+
+    .input {
+      font-size: 0.9rem;
+      width: 50%;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      border: 1px solid #929292;
+      box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.507);
+      outline: none;
+    }
+
+    .title-input {
+      height: 2rem;
+    }
+
+    .text-input {
+      height: 5rem;
+    }
+  }
+
+  input[type='submit'] {
+    padding: 1rem;
+    border-radius: 0.25rem;
+    width: 50%;
+    text-align: center;
+    font-size: 1rem;
+    background-color: #fff;
+    border: 1px solid #000;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background: #000;
+      color: #fff;
+    }
   }
 }

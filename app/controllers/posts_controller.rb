@@ -13,4 +13,26 @@ class PostsController < ApplicationController
       @post = nil
     end
   end
+
+  def new
+    @post = Post.new
+  end
+
+  def create
+    @post = Post.new(author_id: current_user.id, **post_params)
+
+    if @post.save
+      flash[:notice] = 'Your post was created successfully'
+      redirect_to user_posts_path(params[:user_id])
+    else
+      flash[:alert] = 'Sorry, something went wrong!'
+      render :new
+    end
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :text)
+  end
 end
