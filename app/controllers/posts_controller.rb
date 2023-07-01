@@ -13,6 +13,7 @@ class PostsController < ApplicationController
       @post = nil
     end
   end
+
   def new
     @post = Post.new
   end
