@@ -15,7 +15,7 @@
 
     <div class='user-posts'>
         <h2>Posts</h2>
-        <% @posts.includes(:comments).each do |post| %>
+         <% @posts.each do |post| %>
             <div class='post-container'>
                 <div class='title-and-link'>
                     <h3><%= post.title %></h3>
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class='comments-container'>
-                <% post.comments.each do |comment| %>
+                <% post.recent_comments.each do |comment| %>
                     <div class='comment-container'>
                         <h4><%= comment.author.name %>:</h4>
                         <p><%= comment.text %></p>
