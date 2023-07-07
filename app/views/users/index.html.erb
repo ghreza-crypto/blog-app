@@ -1,3 +1,4 @@
+<%= render 'shared/navbar' %>
 <section class='users-section'>
 <% @users.each do |user| %>
     <%= link_to user_path(user.id), class: "nav-link" do %>

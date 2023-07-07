@@ -1,23 +1,40 @@
+<%= render 'shared/navbar' %>
 <section class='user-section'>
     <div class='user-container user-show'>
-        <%= image_tag(@user.photo, style: "height:100%;width:auto;") %>
+        <%= image_tag(@user.photo) %>
         <div class='user-info'>
             <h2 class='username'><%= @user.name %></h2>
             <p class='number-of-posts'>Number of posts: <%= @user.posts_counter %></p>
         </div>
     </div>
-
+        
     <div class='user-bio'>
         <h4>Bio</h4>
         <p><%= @user.bio %></p>
     </div>
+
+    <% if @user.id == current_user.id %>
+        <%= link_to 'Create new post', new_user_post_path(@user.id), class: 'create-post' %>
+    <% end %>
 
     <% if @user.recent_posts.any? %>
         <div class='user-posts'>
             <h2>Posts</h2>
             <% @user.recent_posts.each do |post| %>
                 <div class='post-container'>
-                    <h3><%= post.title %></h3>
+                    <div class='title-and-link'>
+                        <h3><%= post.title %></h3>
+                        <div class='user-interactions'>
+                            <%= link_to 'View post', user_post_path(@user.id, post.id), class: 'interactive-links' %>
+                            |
+                            <%= link_to 'Add comment', new_user_post_comment_path(@user.id, post.id), class: 'interactive-links' %>
+                            |
+                            <%= form_with url: user_post_likes_path(@user.id, post.id) do |form| %>
+                                <a><%= form.submit 'Like', class: 'like-button' %></a>
+                            <% end %>                            
+                            
+                        </div>
+                    </div>
                     <p><%= post.text %></p>
                     <div class='post-interactions'>
                         <p>Comments: <%= post.comments_counter %></p>
