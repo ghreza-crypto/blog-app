@@ -60,6 +60,7 @@ group :development, :test do
   # of interacting with the browser.
   gem 'webdrivers'
   gem 'devise'
+  gem "letter_opener"
 end
 
 group :development do
