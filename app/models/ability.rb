@@ -33,6 +33,6 @@ class Ability
       can :destroy, Post, author_id: user.id
 
       # Allow all for admins
-      can :manage, :all if user.role? == "admin"
+      can :manage, :all if user.role == 'admin'
   end
 end
