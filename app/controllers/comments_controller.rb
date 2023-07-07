@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
 
     flash[:success] = "Comment was successfully deleted."
     redirect_back(fallback_location: root_path)
-  ends
+  end
 
   private
 
