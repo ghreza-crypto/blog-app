@@ -28,6 +28,10 @@
                         <%= form_with url: user_post_likes_path(@user.id, post.id) do |form| %>
                             <a><%= form.submit "Like", class: "like-button" %></a>
                         <% end %>
+                         <% if can?(:destroy, post) || (@user.id == current_user.id) %>
+                            |
+                            <%= button_to 'Delete post', user_post_path(@user.id, post.id), method: :delete, class: 'interactive-links'%>
+                        <% end %> 
                     </div>
                 </div>
                 <p><%= post.text %></p>
@@ -40,8 +44,13 @@
             <div class='comments-container'>
                 <% post.recent_comments.each do |comment| %>
                     <div class='comment-container'>
-                        <h4><%= comment.author.name %>:</h4>
-                        <p><%= comment.text %></p>
+                        <div class='comment'>
+                            <h4><%= comment.author.name %>:</h4>
+                            <p><%= comment.text %></p>
+                        </div>
+                        <% if can?(:destroy, comment) || (comment.author.id == current_user.id) %>
+                            <%= button_to 'Delete comment', user_post_comment_path(@user.id, post.id, comment.id), method: :delete, class: 'interactive-links' %>
+                        <% end %>
                     </div>
                 <% end %>
             </div>
