@@ -58,6 +58,8 @@ group :development, :test do
 
   # The following gems aids with the nuts and bolts
   # of interacting with the browser.
+  gem 'devise'
+  gem 'letter_opener'
   gem 'webdrivers'
 end
 

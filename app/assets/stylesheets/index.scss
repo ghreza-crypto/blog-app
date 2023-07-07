@@ -73,6 +73,12 @@ img {
   width: 90% !important;
 }
 
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
 .no-posts {
   margin-top: 2rem;
 
@@ -161,24 +167,6 @@ img {
   }
 }
 //   break
-
-.comments-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #ddd;
-  box-shadow: 0 0 5px 1px #b8b8b8;
-  width: 100%;
-  padding: 1rem;
-  border-radius: 0 0 0.25rem 0.25rem;
-
-  .comment-container {
-    display: flex;
-    width: 100%;
-    gap: 0.5rem;
-    margin-bottom: 0.25rem;
-  }
-}
 //   break
 .post-section {
   display: flex;
@@ -250,6 +238,117 @@ img {
     &:hover {
       background: #000;
       color: #fff;
+    }
+  }
+}
+//////////////login
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 30rem;
+  padding: 15px;
+  margin: auto;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-weight: bold;
+    }
+
+    .text-input {
+      max-width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      font-size: 1rem;
+    }
+  }
+
+  .actions {
+    width: 100%;
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 1rem;
+      background-color: #000;
+      border: 1px solid #000;
+      color: #fff;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #fff;
+        color: #000;
+      }
+    }
+  }
+}
+///////navbar////
+.header {
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 10px #000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  li {
+    list-style: none;
+    font-size: 1.25rem;
+    font-weight: 700;
+
+    .sign-out-button,
+    a {
+      background-color: transparent;
+      color: blue;
+      font-size: 1rem;
+      border: none;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  .services {
+    display: flex;
+    gap: 2rem;
+  }
+}
+/////////post index/////
+
+.comments-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ddd;
+  box-shadow: 0 0 5px 1px #b8b8b8;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0 0 0.25rem 0.25rem;
+
+  .comment-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .comment {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
     }
   }
 }
