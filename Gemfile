@@ -61,6 +61,7 @@ group :development, :test do
   gem 'devise'
   gem 'letter_opener'
   gem 'webdrivers'
+  gem 'cancancan'
 end
 
 group :development do
