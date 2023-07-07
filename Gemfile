@@ -58,10 +58,10 @@ group :development, :test do
 
   # The following gems aids with the nuts and bolts
   # of interacting with the browser.
+  gem 'cancancan'
   gem 'devise'
   gem 'letter_opener'
   gem 'webdrivers'
-  gem 'cancancan'
 end
 
 group :development do
