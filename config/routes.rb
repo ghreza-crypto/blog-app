@@ -9,7 +9,16 @@ Rails.application.routes.draw do
       resources :likes, only: [:new, :create]
     end
   end
-  
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :users, only: [:index, :show] do 
+        resources :posts, only: [:index, :show, :new, :create, :destroy] do
+          resources :comments, only: [:index, :new, :create, :destroy] 
+          resources :likes, only: [:index, :create, :destroy]
+        end
+      end
+    end
+  end
   root 'users#index'
   get '/users', to: 'users#index'
 end
