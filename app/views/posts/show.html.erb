@@ -14,8 +14,13 @@
             <div class='comments-container'>
                 <% @post.comments.each do |comment| %>
                     <div class='comment-container'>
-                        <h4><%= comment.author.name %>:</h4>
-                        <p><%= comment.text %></p>
+                        <div class='comment'>
+                            <h4><%= comment.author.name %>:</h4>
+                            <p><%= comment.text %></p>
+                        </div>
+                        <% if can?(:destroy, comment) || (comment.author.id == current_user.id) %>
+                            <%= button_to 'Delete comment', user_post_comment_path(@user.id, @post.id, comment.id), method: :delete, class: 'interactive-links' %>
+                        <% end %>
                     </div>
                 <% end %>
             </div>
